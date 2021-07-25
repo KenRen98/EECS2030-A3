@@ -1,4 +1,5 @@
 package org.eecs.a3.teamafk.MLS;
+import org.apache.jasper.tagplugins.jstl.core.Catch;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -406,8 +407,13 @@ public class MLSSpringBoot {
      */
     @PostMapping(value = "/mlssearch")
     public String mlsseach(@RequestParam("id")String id,ModelMap model,Model mod){
-        model.addAttribute("id",id);
-        return mlsdisplay(mod,UUID.fromString(id));
+        try {
+            model.addAttribute("id",id);
+            return mlsdisplay(mod,UUID.fromString(id));
+        }
+        catch(IllegalArgumentException e) {
+            return "NoResultFound";
+        }
     }
 
     /**
