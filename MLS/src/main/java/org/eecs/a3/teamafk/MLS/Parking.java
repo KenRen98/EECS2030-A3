@@ -20,10 +20,7 @@ public class Parking implements MLSInterface{
      * Set the ID of the property
      * @param type of the property
      */
-    public void setType(String type) throws Exception {
-        if(type.length()>30){
-            throw new Exception("It needs to be less than 30 characters!");
-        }
+    public void setType(String type) {
         this.type = type;
     }
 
@@ -61,7 +58,7 @@ public class Parking implements MLSInterface{
 
     @Override
     public String Display() {
-        return "Parking information: <br/>" + "Type: " + type + "<br/>" + "Size: " + size + " Cars" + "<br/>" + "RV Space: " + isRVok;
+        return "Parking information: <br/>" + "Type: " + type + "<br/>" + "Size: " + size + " Cars" + "<br/>" + "RV Space: " + stringhelper(isRVok) ;
     }
 
 
@@ -106,7 +103,7 @@ public class Parking implements MLSInterface{
         }
 
         /**
-         * Finalize the construction of an MLS record using Builder design pattern.
+         * Finalize the construction of an parking object using Builder design pattern.
          * @return the MLS record using the previously collected information
          * provided to the Builder object.
          */
@@ -117,6 +114,18 @@ public class Parking implements MLSInterface{
             pk.isRVok = this.isRVok;
             return pk;
         }
+    }
+
+    /**
+     * Help to convert Boolean to string
+     * @param something
+     * @return A string of yes or no
+     */
+    protected String stringhelper(boolean something){
+        if (something == true){
+            return "YES";
+        }
+        return "NO";
     }
 
 }
