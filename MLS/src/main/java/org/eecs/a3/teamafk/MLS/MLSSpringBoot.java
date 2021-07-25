@@ -10,6 +10,12 @@ import java.util.UUID;
 
 import static java.lang.Integer.parseInt;
 
+
+/**
+ * Spring Boot functions for the DB
+ * @author Ken Ren
+ * @version 1.0
+ */
 @Controller
 public class MLSSpringBoot {
 
@@ -55,7 +61,26 @@ public class MLSSpringBoot {
             return "NoResultFound";
         }
         model.addAttribute("building", mlsLookup(id).getBuilding().Display());
+        model.addAttribute("id",id);
         return "view-building";
+    }
+
+    /**
+     * Display the changed building result
+     */
+    @PostMapping(value = "/building/changed")
+    public String buildingchange(@RequestParam("size")String size,@RequestParam("address")String address,@RequestParam("country")String country,ModelMap model,Model mod){
+        UUID id = ViewingID.getInstance().getid();
+        model.put("size", size);
+        model.put("address", address);
+        model.put("country", country);
+        if(size!="")
+            mlsLookup(id).getBuilding().setSize(parseInt(size));
+        if(address!="")
+            mlsLookup(id).getBuilding().setAddress(address);
+        if(country!="")
+            mlsLookup(id).getBuilding().setCountry(country);
+        return buildingdisplay(mod,id);
     }
 
     /**
@@ -106,6 +131,16 @@ public class MLSSpringBoot {
                 case "Condo":
                     BuildCondo condo = new Building.BuildingBuilder().type(type).size(size).address(address).country(country).schooldistrict(schooldistrict).bedrooms(bedrooms).livingroom(livingroom).totalrooms(totalrooms).expenses(expenses).builtdate(builtdate).floorlevel(floorlevel).pool(pool).cableready(cableready).furnished(furnished).hassecurity(hassecurity).hasgarden(hasgarden).gardensize(gardensize).description(description).buildcondo();
                     return condo;
+                case "Detached":
+                    Detached deta = new Building.BuildingBuilder().type(type).size(size).address(address).country(country).schooldistrict(schooldistrict).bedrooms(bedrooms).livingroom(livingroom).totalrooms(totalrooms).expenses(expenses).builtdate(builtdate).floorlevel(floorlevel).pool(pool).cableready(cableready).furnished(furnished).hassecurity(hassecurity).hasgarden(hasgarden).gardensize(gardensize).description(description).builddetached();
+                    return deta;
+                case "Semi-Detached":
+                    Semi_Detached semi  = new Building.BuildingBuilder().type(type).size(size).address(address).country(country).schooldistrict(schooldistrict).bedrooms(bedrooms).livingroom(livingroom).totalrooms(totalrooms).expenses(expenses).builtdate(builtdate).floorlevel(floorlevel).pool(pool).cableready(cableready).furnished(furnished).hassecurity(hassecurity).hasgarden(hasgarden).gardensize(gardensize).description(description).buildSemi_Detached();
+                    return semi;
+                case "Townhouse":
+                    Townhouse town  = new Building.BuildingBuilder().type(type).size(size).address(address).country(country).schooldistrict(schooldistrict).bedrooms(bedrooms).livingroom(livingroom).totalrooms(totalrooms).expenses(expenses).builtdate(builtdate).floorlevel(floorlevel).pool(pool).cableready(cableready).furnished(furnished).hassecurity(hassecurity).hasgarden(hasgarden).gardensize(gardensize).description(description).buildtownhouse();
+                    return town;
+                case "Land":
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -137,7 +172,9 @@ public class MLSSpringBoot {
     }
     */
 
-
+    /**
+     * Display the changed owner result
+     */
     @PostMapping(value = "/owner/changed")
     public String ownerchange(@RequestParam("firstname")String firstname,@RequestParam("lastname")String lastname,@RequestParam("phone")String phone,@RequestParam("email")String email,ModelMap model,Model mod){
         UUID id = ViewingID.getInstance().getid();
@@ -205,6 +242,9 @@ public class MLSSpringBoot {
         return "view-parking";
     }
 
+    /**
+     * Display the changed parking result
+     */
     @PostMapping(value = "/parking/changed")
     public String parkingchange(@RequestParam("type")String type,@RequestParam("size")String size,@RequestParam("rvok")String rvok,ModelMap model,Model mod){
         UUID id = ViewingID.getInstance().getid();
@@ -258,13 +298,32 @@ public class MLSSpringBoot {
      * Display the inside mls search result
      * @param id the id for searching mls
      */
-    @RequestMapping(value = "/mls/display", method = RequestMethod.GET)
-    public @ResponseBody
-    String mlsdisplay(@RequestParam(value = "id", required = true) UUID id) {
+    @RequestMapping(value = "/mlschange", method = RequestMethod.GET)
+    public String mlsdisplay(Model model, @RequestParam(value = "id", required = true) UUID id) {
         if (mlsLookup(id)==null){
-            return "No Result Found";
+            return "NoResultFound";
         }
-        return mlsLookup(id).Display();
+        model.addAttribute("mls", mlsLookup(id).Display());
+        model.addAttribute("id",id);
+        return "view-mls";
+    }
+
+    /**
+     * Display the changed mls result
+     */
+    @PostMapping(value = "/mlschanged")
+    public String mlschange(@RequestParam("name")String name,@RequestParam("type")String type,@RequestParam("date")String date,ModelMap model,Model mod){
+        UUID id = ViewingID.getInstance().getid();
+        model.put("name", name);
+        model.put("type", type);
+        model.put("date", date);
+        if(name!="")
+            mlsLookup(id).setMlsname(name);
+        if(type!="")
+            mlsLookup(id).setListtype(type);
+        if(date!="")
+            mlsLookup(id).setListdate(date);
+        return mlsdisplay(mod,id);
     }
 
     /**
@@ -321,12 +380,69 @@ public class MLSSpringBoot {
         return null;
     }
 
-    @PostMapping("/mlsnew")
-    public @ResponseBody
-    MLS CreateMLS() {
-        MLS newMLS = new MLS();
+    /**
+     * create new mls record
+     */
+    @RequestMapping("/mlsnew")
+    public String CreateMLS(Model model) {
         UUID id = UUID.randomUUID();
+        BuildCondo condo = new Building.BuildingBuilder().buildcondo();
+        MLS newMLS = new MLS.Builder(id).Owneris1(new Owner()).Buildingis2(condo).Parkingis3(new Parking()).build();
         SingletonCache.getInstance().putValue(id,newMLS);
-        return SingletonCache.getInstance().getByID(id);
+        ViewingID.getInstance().putid(id);
+        return mlsdisplay(model,id);
+    }
+
+    /**
+     * Get user the index html
+     */
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public String index(Model model) {
+        return "index";
+    }
+
+    /**
+     * Return search result
+     */
+    @PostMapping(value = "/mlssearch")
+    public String mlsseach(@RequestParam("id")String id,ModelMap model,Model mod){
+        model.addAttribute("id",id);
+        return mlsdisplay(mod,UUID.fromString(id));
+    }
+
+    /**
+     * help to view building modify page
+     */
+    @RequestMapping(value = "/building/changed")
+    public String buildinghelper(Model mod){
+        UUID id = ViewingID.getInstance().getid();
+        return buildingdisplay(mod,id);
+    }
+
+    /**
+     * help to view user modify page
+     */
+    @RequestMapping(value = "/owner/changed")
+    public String ownerhelper(Model mod){
+        UUID id = ViewingID.getInstance().getid();
+        return ownerdisplay(mod,id);
+    }
+
+    /**
+     * help to view parking modify page
+     */
+    @RequestMapping(value = "/parking/changed")
+    public String parkinghelper(Model mod){
+        UUID id = ViewingID.getInstance().getid();
+        return parkingdisplay(mod,id);
+    }
+
+    /**
+     * help to view mls modify page
+     */
+    @RequestMapping(value = "/mlschanged")
+    public String mlshelper(Model mod){
+        UUID id = ViewingID.getInstance().getid();
+        return mlsdisplay(mod,id);
     }
 }
