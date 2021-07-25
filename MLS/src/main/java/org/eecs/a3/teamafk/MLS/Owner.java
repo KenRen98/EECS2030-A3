@@ -73,7 +73,7 @@ public class Owner implements MLSInterface {
 
     @Override
     public String Display() {
-        return "Owner Information: <br/>" + "Firstname: " + firstname + "<br/>" + "Lastname: " + lastname + "<br/>" + "Phone: " + phone + "<br/>" + "Email: " + email + "<br/>";
+        return "Firstname: " + firstname + "<br/>" + "Lastname: " + lastname + "<br/>" + "Phone: " + phone + "<br/>" + "Email: " + email;
     }
 
     /**
@@ -128,7 +128,7 @@ public class Owner implements MLSInterface {
         }
 
         /**
-         * Finalize the construction of an MLS record using Builder design pattern.
+         * Finalize the construction of owner using Builder design pattern.
          * @return the MLS record using the previously collected information
          * provided to the Builder object.
          */
