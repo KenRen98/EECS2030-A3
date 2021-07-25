@@ -2,6 +2,9 @@ package org.eecs.a3.teamafk.MLS;
 import java.util.HashMap;
 import java.util.UUID;
 
+/**
+ * A Standard Singleton Cache
+ */
 public class SingletonCache {
     // @TODO: To be complete by students for caching layer
     private static SingletonCache INSTANCE = null;
