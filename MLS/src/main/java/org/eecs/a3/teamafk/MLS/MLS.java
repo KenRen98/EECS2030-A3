@@ -22,135 +22,199 @@ public class MLS implements MLSInterface{
     private String listingurl = null;
 
     /**
-     * Set the ID of the property
-     * @param id the UUID of the property
-     */
-    protected void setId(UUID id) {
-        this.uuid = id;
-    }
-
-    /**
      * Get the ID of the property
      * @return the UUID of the property
      */
-    protected UUID getId() {
+    public UUID getUuid() {
         return uuid;
     }
 
     /**
-     * Set the Owner of the property
-     * @param owner of the property
+     * Set the ID of the property
+     * @param uuid the UUID of the property
      */
-    protected void setOwner(Owner owner) {
-        this.owner = owner;
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
     }
 
     /**
      * Get the Owner of the property
      * @return the owner of the property
      */
-    protected Owner getOwner() {
+    public Owner getOwner() {
         return owner;
     }
 
     /**
-     * Set the mlsname of the property
-     * @param mlsname of the property
+     * Set the Owner of the property
+     * @param owner of the property
      */
-    protected void setmlsname(String mlsname) {
-        this.mlsname = mlsname;
+    public void setOwner(Owner owner) {
+        this.owner = owner;
+    }
+
+    /**
+     * Get the Building of the property
+     * @return the Building of the property
+     */
+    public Building getBuilding() {
+        return building;
+    }
+
+    /**
+     * Set the building of the property
+     * @param building of the property
+     */
+    public void setBuilding(Building building) {
+        this.building = building;
+    }
+
+    /**
+     * Get the Parking of the property
+     * @return the Parking of the property
+     */
+    public Parking getParking() {
+        return parking;
+    }
+
+    /**
+     * Set the parking of the property
+     * @param parking of the property
+     */
+    public void setParking(Parking parking) {
+        this.parking = parking;
     }
 
     /**
      * Get the mlsname of the property
      * @return the mlsname of the property
      */
-    protected String getmlsname() {
+    public String getMlsname() {
         return mlsname;
     }
 
     /**
-     * Set the price of the property
-     * @param price of the property
+     * Set the mlsname of the property
+     * @param mlsname of the property
      */
-    protected void setPrice(int price) {
-        this.price = price;
+    public void setMlsname(String mlsname) {
+        this.mlsname = mlsname;
+    }
+
+    /**
+     * Get the type of the Listing
+     * @return the type of the Listing
+     */
+    public String getListtype() {
+        return listtype;
+    }
+
+    /**
+     * Set the type of the Listing
+     * @param listtype of the property
+     */
+    public void setListtype(String listtype) {
+        this.listtype = listtype;
     }
 
     /**
      * Get the price of the property
      * @return the price of the property
      */
-    protected int getPrice() {
+    public int getPrice() {
         return price;
     }
 
     /**
-     * Set the enddate of the property
-     * @param enddate of the property
+     * Set the price of the property
+     * @param price of the property
      */
-    protected void setenddate(String enddate) {
-        this.enddate = enddate;
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    /**
+     * Get the listingDate of the property
+     * @return the listingDate of the property
+     */
+    public String getListdate() {
+        return listdate;
+    }
+
+    /**
+     * Set the listdate of the property
+     * @param listdate of the property
+     */
+    public void setListdate(String listdate) {
+        this.listdate = listdate;
     }
 
     /**
      * Get the enddate of the property
      * @return the enddate of the property
      */
-    protected String getenddate() {
+    public String getEnddate() {
         return enddate;
     }
 
     /**
-     * Set the sold of the property
-     * @param sold of the property
+     * Set the enddate of the property
+     * @param enddate of the property
      */
-    protected void setsold(Boolean sold) {
-        this.sold = sold;
+    public void setEnddate(String enddate) {
+        this.enddate = enddate;
     }
 
     /**
      * Get the sold of the property
      * @return the sold of the property
      */
-    protected Boolean getsold() {
+    public boolean isSold() {
         return sold;
     }
 
     /**
-     * Set the brokerage of the property
-     * @param brokerage of the property
+     * Set the sold of the property
+     * @param sold of the property
      */
-    protected void setbrokerage(String brokerage) {
-        this.brokerage = brokerage;
+    public void setSold(boolean sold) {
+        this.sold = sold;
     }
 
     /**
      * Get the brokerage of the property
      * @return the brokerage of the property
      */
-    protected String getbrokerage() {
+    public String getBrokerage() {
         return brokerage;
     }
 
     /**
-     * Set the listingurl of the property
-     * @param listingurl of the property
+     * Set the brokerage of the property
+     * @param brokerage of the property
      */
-    protected void setlistingurl(String listingurl) {
-        this.listingurl = listingurl;
+    public void setBrokerage(String brokerage) {
+        this.brokerage = brokerage;
     }
 
     /**
      * Get the listingurl of the property
      * @return the listingurl of the property
      */
-    protected String getlistingurl() {
+    public String getListingurl() {
         return listingurl;
     }
 
     /**
-     * Create MLS based on string
+     * Set the listingurl of the property
+     * @param listingurl of the property
+     */
+    public void setListingurl(String listingurl) {
+        this.listingurl = listingurl;
+    }
+
+    /**
+     * Create String based on MLS
      * @return a String of MLS
      */
     @Override
@@ -172,9 +236,9 @@ public class MLS implements MLSInterface{
         }
         s = s + "Brokerage: "+brokerage+"<br/>";
         s = s + "Listing URL: "+listingurl+"<br/>";
-        s = s + "<br/><br/>"+owner.Display();
-        s = s + "<br/><br/>"+building.Display();
-        s = s + "<br/><br/>"+parking.Display();
+        s = s + "<br/><br/>"+owner.Display() + "<br/><br/><a href=\"owner/changed\" class=\"button\">Click to change Owner Info</a>" + "<br/><hr>";
+        s = s + "<br/><br/>"+building.Display() + "<br/><a href=\"building/changed\" class=\"button\">Click to change Building Info</a>";
+        s = s + "<br/><br/>"+parking.Display() + "<br/><br/><a href=\"parking/changed\" class=\"button\">Click to change Parking Info</a>" +"<br/><hr>";
 
         return s;
     }
