@@ -25,7 +25,7 @@ public abstract class Building implements MLSInterface {
      * Set the type of the property
      * @param type of the property
      */
-    protected void settype(String type) {
+    public void setType(String type) {
         this.type =  type;
     }
 
@@ -33,7 +33,7 @@ public abstract class Building implements MLSInterface {
      * Get the type of the property
      * @return the type of the property
      */
-    protected String gettype() {
+    public String getType() {
         return type;
     }
 
@@ -41,7 +41,7 @@ public abstract class Building implements MLSInterface {
      * Set the size of the property
      * @param size of the property
      */
-    protected void setsize(int size) {
+    public void setSize(int size) {
         this.size =  size;
     }
 
@@ -49,7 +49,7 @@ public abstract class Building implements MLSInterface {
      * Get the size of the property
      * @return the size of the property
      */
-    protected int getsize() {
+    public int getSize() {
         return size;
     }
 
@@ -57,7 +57,7 @@ public abstract class Building implements MLSInterface {
      * Set the address of the property
      * @param address of the property
      */
-    protected void setaddress(String address) {
+    public void setAddress(String address) {
         this.address =  address;
     }
 
@@ -65,7 +65,7 @@ public abstract class Building implements MLSInterface {
      * Get the address of the property
      * @return the address of the property
      */
-    protected String getaddress() {
+    public String getAddress() {
         return address;
     }
 
@@ -74,7 +74,7 @@ public abstract class Building implements MLSInterface {
      * Set the country of the property
      * @param country of the property
      */
-    protected void setcountry(String country) {
+    public void setCountry(String country) {
         this.country =  country;
     }
 
@@ -84,7 +84,7 @@ public abstract class Building implements MLSInterface {
      * Get the country of the property
      * @return the country of the property
      */
-    protected String getcountry() {
+    public String getCountry() {
         return country;
     }
 
@@ -93,7 +93,7 @@ public abstract class Building implements MLSInterface {
      * Set the schooldistrict of the property
      * @param schooldistrict of the property
      */
-    protected void setschooldistrict(String schooldistrict) {
+    public void setSchooldistrict(String schooldistrict) {
         this.schooldistrict =  schooldistrict;
     }
 
@@ -102,7 +102,7 @@ public abstract class Building implements MLSInterface {
      * Get the schooldistrict of the property
      * @return the schooldistrict of the property
      */
-    protected String getschooldistrict() {
+    public String getSchooldistrict() {
         return schooldistrict;
     }
 
@@ -111,7 +111,7 @@ public abstract class Building implements MLSInterface {
      * Set the bedrooms of the property
      * @param bedrooms of the property
      */
-    protected void setbedrooms(int bedrooms) {
+    public void setBedrooms(int bedrooms) {
         this.bedrooms =  bedrooms;
     }
 
@@ -120,7 +120,7 @@ public abstract class Building implements MLSInterface {
      * Get the bedrooms of the property
      * @return bedrooms of the property
      */
-    protected int getbedrooms() {
+    public int getBedrooms() {
         return bedrooms;
     }
 
@@ -130,7 +130,7 @@ public abstract class Building implements MLSInterface {
      * Set the livingroom  of the property
      * @param livingroom  of the property
      */
-    protected void setlivingroom (int livingroom) {
+    public void setLivingroom (int livingroom) {
         this.livingroom =  livingroom;
     }
 
@@ -139,7 +139,7 @@ public abstract class Building implements MLSInterface {
      * Get the livingroom of the property
      * @return livingroom of the property
      */
-    protected int getlivingroom() {
+    public int getLivingroom() {
         return livingroom;
     }
 
@@ -148,7 +148,7 @@ public abstract class Building implements MLSInterface {
      * Set the totalrooms  of the property
      * @param totalrooms of the property
      */
-    protected void settotalrooms (int totalrooms) {
+    public void setTotalrooms (int totalrooms) {
         this.totalrooms =  totalrooms;
     }
 
@@ -157,7 +157,7 @@ public abstract class Building implements MLSInterface {
      * Get the totalrooms of the property
      * @return totalrooms of the property
      */
-    protected int gettotalrooms() {
+    public int getTotalrooms() {
         return totalrooms;
     }
 
@@ -166,7 +166,7 @@ public abstract class Building implements MLSInterface {
      * Set the setexpenses  of the property
      * @param expenses  of the property
      */
-    protected void setexpenses (String expenses) {
+    public void setExpenses (String expenses) {
         this.expenses =  expenses;
     }
 
@@ -175,7 +175,7 @@ public abstract class Building implements MLSInterface {
      * Get the expenses of the property
      * @return expenses of the property
      */
-    protected String getexpenses() {
+    public String getExpenses() {
         return expenses;
     }
 
@@ -185,7 +185,7 @@ public abstract class Building implements MLSInterface {
      * Set the builtdate  of the property
      * @param builtdate of the property
      */
-    protected void setbuiltdate (String builtdate) {
+    public void setBuiltdate (String builtdate) {
         this.builtdate =  builtdate;
     }
 
@@ -195,7 +195,7 @@ public abstract class Building implements MLSInterface {
      *Get the builtdate of the property
      * @return builtdate of the property
      */
-    protected String getbuiltdate() {
+    public String getBuiltdate() {
         return builtdate;
     }
 
@@ -205,7 +205,7 @@ public abstract class Building implements MLSInterface {
      * Set the floorlevel  of the property
      * @param floorlevel of the property
      */
-    protected void setfloorlevel (int floorlevel) {
+    public void setFloorlevel (int floorlevel) {
         this.floorlevel =  floorlevel;
     }
 
@@ -214,7 +214,7 @@ public abstract class Building implements MLSInterface {
      * Get the floorlevel of the property
      * @return floorlevel of the property
      */
-    protected int getfloorlevel() {
+    public int getFloorlevel() {
         return floorlevel;
     }
 
@@ -223,7 +223,7 @@ public abstract class Building implements MLSInterface {
      * Set the pool  of the property
      * @param pool of the property
      */
-    protected void setpool  (boolean pool) {
+    public void setPool  (boolean pool) {
         this.pool  =  pool;
     }
 
@@ -231,7 +231,7 @@ public abstract class Building implements MLSInterface {
      * Get the pool of the property
      * @return pool of the property
      */
-    protected boolean getpool () {
+    public boolean isPool () {
         return pool;
     }
 
@@ -239,7 +239,7 @@ public abstract class Building implements MLSInterface {
      * Set the cableready  of the property
      * @param cableready of the property
      */
-    protected void cableready  (boolean cableready) {
+    public void setCableready  (boolean cableready) {
         this.cableready  =  cableready;
     }
 
@@ -248,7 +248,7 @@ public abstract class Building implements MLSInterface {
      * Get the cableready of the property
      * @return cablereadyl of the property
      */
-    protected boolean getcableready() {
+    public boolean isCableready() {
         return cableready;
     }
 
@@ -257,7 +257,7 @@ public abstract class Building implements MLSInterface {
      * Set the furnished  of the property
      * @param furnished of the property
      */
-    protected void furnished  (boolean furnished) {
+    public void setFurnished  (boolean furnished) {
         this.furnished  =  furnished;
     }
 
@@ -267,7 +267,7 @@ public abstract class Building implements MLSInterface {
      * Get the furnished of the property
      * @return furnished of the property
      */
-    protected boolean getfurnished() {
+    public boolean isFurnished() {
         return furnished;
     }
 
@@ -277,7 +277,7 @@ public abstract class Building implements MLSInterface {
      * Set the hassecurity of the property
      * @param hassecurity of the property
      */
-    protected void hassecurity  (boolean hassecurity) {
+    public void setHassecurity  (boolean hassecurity) {
         this.hassecurity  =  hassecurity;
     }
 
@@ -286,7 +286,7 @@ public abstract class Building implements MLSInterface {
      * Get the hassecurity of the property
      * @return hassecurity of the property
      */
-    protected boolean gethassecurity() {
+    public boolean isHassecurity() {
         return hassecurity;
     }
 
@@ -295,7 +295,7 @@ public abstract class Building implements MLSInterface {
      * Set the hasgarden of the property
      * @param hasgarden of the property
      */
-    protected void hasgarden  (boolean hasgarden) {
+    public void setHasgarden  (boolean hasgarden) {
         this.hasgarden  =  hasgarden;
     }
 
@@ -305,7 +305,7 @@ public abstract class Building implements MLSInterface {
      * Get the hasgarden of the property
      * @return hasgarden of the property
      */
-    protected boolean gethasgarden() {
+    public boolean isHasgarden() {
         return hasgarden;
     }
 
@@ -314,7 +314,7 @@ public abstract class Building implements MLSInterface {
      * Set the gardensize of the property
      * @param gardensize of the property
      */
-    protected void setgardensize(int gardensize) {
+    public void setGardensize(int gardensize) {
         this.gardensize =  gardensize;
     }
 
@@ -323,7 +323,7 @@ public abstract class Building implements MLSInterface {
      * Get the gardensize of the property
      * @return gardensize of the property
      */
-    protected int getgardensize() {
+    public int getGardensize() {
         return gardensize;
     }
 
@@ -333,7 +333,7 @@ public abstract class Building implements MLSInterface {
      * Set the description of the property
      * @param description of the property
      */
-    protected void setdescription(String description) {
+    public void setDescription(String description) {
         this.description =  description;
     }
 
@@ -342,7 +342,7 @@ public abstract class Building implements MLSInterface {
      * Get the description of the property
      * @return description of the property
      */
-    protected String getdescription() {
+    public String getDescription() {
         return description;
     }
 
@@ -351,6 +351,7 @@ public abstract class Building implements MLSInterface {
      * @param something
      * @return A string of yes or no
      */
+
     protected String stringhelper(boolean something){
         if (something == true){
             return "YES";
@@ -481,7 +482,21 @@ public abstract class Building implements MLSInterface {
         public BuildCondo buildcondo() {
             return new BuildCondo(size, address, country, schooldistrict, bedrooms, livingroom, totalrooms, expenses, builtdate, floorlevel, pool, cableready, furnished, hassecurity, hasgarden, gardensize, description);
         }
-        
-       
+
+        public Detached builddetached(){
+            return  new Detached(size, address, country, schooldistrict, bedrooms, livingroom, totalrooms, expenses, builtdate, floorlevel, pool, cableready, furnished, hassecurity, hasgarden, gardensize, description);
+        }
+
+        public Semi_Detached buildSemi_Detached(){
+            return new Semi_Detached(size, address, country, schooldistrict, bedrooms, livingroom, totalrooms, expenses, builtdate, floorlevel, pool, cableready, furnished, hassecurity, hasgarden, gardensize, description);
+        }
+
+        public Townhouse buildtownhouse(){
+            return new Townhouse(size, address, country, schooldistrict, bedrooms, livingroom, totalrooms, expenses, builtdate, floorlevel, pool, cableready, furnished, hassecurity, hasgarden, gardensize, description);
+        }
+
+        public Land buildland(){
+            return new Land(size, address, country, schooldistrict, bedrooms, livingroom, totalrooms, expenses, builtdate, floorlevel, pool, cableready, furnished, hassecurity, hasgarden, gardensize, description);
+        }
     }
 }
