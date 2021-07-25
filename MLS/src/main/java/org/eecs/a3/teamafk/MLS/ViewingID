@@ -1,0 +1,45 @@
+package org.eecs.a3.teamafk.MLS;
+
+import java.util.ArrayList;
+import java.util.UUID;
+
+public class ViewingID {
+    private static ViewingID INSTANCE = null;
+    private static final ArrayList<UUID> LocalCache = new ArrayList<UUID>();
+    private ViewingID(){
+    }
+
+    /**
+     * @return the instance of the Singleton
+     * Create one and return it if it is null
+     */
+    public static synchronized ViewingID getInstance()
+    {
+        if (ViewingID.INSTANCE == null)
+        {
+            ViewingID.INSTANCE = new ViewingID();
+        }
+        return ViewingID.INSTANCE;
+
+    }
+
+    /**
+     * @return uuid
+     * search from the singleton map by given ID
+     */
+    public UUID getid(){
+        return LocalCache.get(0);
+    }
+
+    /**
+     * @param id The UUID needs to be placed
+     * Create a element in the singleton map
+     */
+    public void putid(UUID id){
+
+        if (LocalCache.size()==0) {
+            LocalCache.add(id);
+        }
+            LocalCache.set(0,id);
+    }
+}
